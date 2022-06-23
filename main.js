@@ -51,15 +51,13 @@ getThePromise()
     negative;
   });
 
-
-
 3 - 4;
 
 let numbs = [2, 4];
 function getPromiseAndArguments(numbs) {
   return new Promise((resolve, reject) => {
     numbs.forEach((item) => {
-      if (numbs[1] % numbs[0]) {
+      if (item % numbs[i]) {
         resolve("yes");
       }
       reject("no");
@@ -75,8 +73,6 @@ getPromiseAndArguments()
     id_h2.innerText = "no";
     positive2;
   });
-
-
 
 5 - 6;
 
@@ -102,8 +98,6 @@ getPromiseAndCheckIfExist()
     negative3;
   });
 
-
-
 async function getMovies() {
   try {
     btn.disabled = false;
@@ -115,8 +109,6 @@ async function getMovies() {
     btn.disabled = false;
   }
 }
-
-
 
 async function getSomeData() {
   try {
@@ -134,19 +126,34 @@ async function getSomeData() {
 }
 getSomeData();
 
-
-
 async function getAnotherData() {
   try {
     btn_3.disabled = true;
     loading.innerHTML = "<img style='width:20vw' src='giphy.webp' />";
-    await fetch("https://cat-fact.herokuapp.com/facts").then((someData) =>
-      console.log(someData)
-    );
+    await fetch("https://cat-fact.herokuapp.com/facts").then((someData) => {
+      return someData.json();
+    });
   } catch (someErr) {
     alert(someErr);
   } finally {
     btn_3.disabled = false;
+    loading.innerHTML = "";
+  }
+}
+
+async function getSomeData3() {
+  try {
+    btn_4.disabled = true;
+    loading.innerHTML = "<img style='width:20vw' src='loading-opaque.gif' />";
+    await fetch("200/150/https://placekeanu.com").then(Response=>{
+      return Response.json();
+    }).then((res).data.forEach(element=>{
+      id_div.innerHTML +=`<img src="${element.images.jpj.image_url}`
+    }))
+  } catch (error) {
+    alert(error);
+  } finally {
+    btn_4.disabled = false;
     loading.innerHTML = "";
   }
 }
