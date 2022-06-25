@@ -1,4 +1,4 @@
-//שלד בסיסי
+// שלד בסיסי
 
 function getPromise() {
   return new Promise((resolve, reject) => {
@@ -44,7 +44,6 @@ function getThePromise() {
 }
 getThePromise()
   .then((positive) => {
-    id_h1.innerText = "good morning";
     positive;
   })
   .catch((negative) => {
@@ -81,7 +80,7 @@ let onlyNum = 12;
 function getPromiseAndCheckIfExist(onlyNum, arrayNumbers) {
   return new Promise((resolve, reject) => {
     arrayNumbers.forEach((key) => {
-      if ([key] == onlyNum) {
+      if (key == onlyNum) {
         resolve("yes");
       }
       reject("no");
@@ -155,5 +154,27 @@ async function getSomeData3() {
   } finally {
     btn_4.disabled = false;
     loading.innerHTML = "";
+  }
+}
+
+async function getSomeData4(){
+  try{
+    btn13.disabled = true;
+    id_13.innerHTML = "<img style='width:20vw' src='gif_13.jpg' />"
+    await fetch("https://api.jikan.moe/v4/anime")
+      .then((response) => {
+        return response.json();
+      }).then((thisResponse) => {
+        console.log(thisResponse.data);
+        id_div13.innerText += thisResponse.data.length;
+      });
+  }
+  catch(err){
+    alert("error");
+  }
+  finally{
+    btn13.disabled = false;
+    id_13.innerHTML = ""
+
   }
 }
