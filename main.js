@@ -1,34 +1,32 @@
-// שלד בסיסי
 
-function getPromise() {
-  return new Promise((resolve, reject) => {
-    btn_1.disabled = false;
-    loading.innerHTML = "<img style='width:20vw' src='giphy.webp' />";
+// function getPromise() {
+//   return new Promise((resolve, reject) => {
+//     btn_1.disabled = false;
+//     loading.innerHTML = "<img style='width:20vw' src='giphy.webp' />";
 
-    setTimeout(() => {
-      const rnd = Math.floor(Math.random() * 4);
-      if (rnd >= 3) {
-        resolve("hello");
-      }
-      reject(rnd);
-    });
-  }, 3000);
-}
+//     setTimeout(() => {
+//       const rnd = Math.floor(Math.random() * 4);
+//       if (rnd >= 3) {
+//         resolve("hello");
+//       }
+//       reject(rnd);
+//     });
+//   }, 3000);
+// }
 
-function playFunction() {
-  getPromise()
-    .then((date) => {
-      console.log(date);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      loading.innerHTML = "";
-      btn.disabled = true;
-    });
-}
-//--------------------------------------------------------------------//
+// function playFunction() {
+//   getPromise()
+//     .then((date) => {
+//       console.log(date);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     })
+//     .finally(() => {
+//       loading.innerHTML = "";
+//       btn.disabled = true;
+//     });
+// }
 
 1 - 2;
 function getThePromise() {
@@ -144,11 +142,15 @@ async function getSomeData3() {
   try {
     btn_4.disabled = true;
     loading.innerHTML = "<img style='width:20vw' src='loading-opaque.gif' />";
-    await fetch("200/150/https://placekeanu.com").then(Response=>{
-      return Response.json();
-    }).then((res).data.forEach(element=>{
-      id_div.innerHTML +=`<img src="${element.images.jpj.image_url}`
-    }))
+    await fetch("200/150/https://placekeanu.com")
+      .then((Response) => {
+        return Response.json();
+      })
+      .then(
+        res.data.forEach((element) => {
+          id_div.innerHTML += `<img src="${element.images.jpj.image_url}`;
+        })
+      );
   } catch (error) {
     alert(error);
   } finally {
@@ -157,24 +159,24 @@ async function getSomeData3() {
   }
 }
 
-async function getSomeData4(){
-  try{
+async function getSomeData4() {
+  try {
     btn13.disabled = true;
-    id_13.innerHTML = "<img style='width:20vw' src='gif_13.jpg' />"
+    id_13.innerHTML = "<img style='width:20vw' src='gif_13.jpg' />";
     await fetch("https://api.jikan.moe/v4/anime")
       .then((response) => {
         return response.json();
-      }).then((thisResponse) => {
+      })
+      .then((thisResponse) => {
         console.log(thisResponse.data);
         id_div13.innerText += thisResponse.data.length;
       });
-  }
-  catch(err){
+  } catch (err) {
     alert("error");
-  }
-  finally{
+  } finally {
     btn13.disabled = false;
-    id_13.innerHTML = ""
-
+    id_13.innerHTML = "";
   }
 }
+
+
